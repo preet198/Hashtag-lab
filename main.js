@@ -1,11 +1,15 @@
-setInterval(function checkImage() {
-  const imgTop = $('#myimage').position().top;
-  const imgBottom = $('#myimage').height() + imgTop;
+window.setInterval(function checkImage() {
   let viewportTop = $(document).scrollTop();
   let viewportBottom = viewportTop + window.innerHeight;
-  if ((viewportTop < imgTop && imgTop < viewportBottom) || (viewportTop < imgBottom && imgBottom < viewportBottom)) {
+  const imgTop = $('img').offset().top;
+  const imgBottom = $('#myimage').height() + imgTop;
+
+  if ((viewportTop < imgTop && imgTop < viewportBottom) ||
+    (viewportTop < imgBottom && imgBottom < viewportBottom)) {
     console.log('im here');
-  } else if (!(viewportTop < imgTop && imgTop < viewportBottom) || !(viewportTop < imgBottom && imgBottom < viewportBottom)) {
+  } else if (!(viewportTop < imgTop && imgTop < viewportBottom) ||
+    !(viewportTop < imgBottom && imgBottom < viewportBottom)) {
     console.log('not')
   }
 },2000)
+
